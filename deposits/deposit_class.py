@@ -9,7 +9,11 @@ class Deposit:
 
     def interest(self):
         _interest = 0
-        total = int(self.deposit) * ((1 + float(self.rate)) ** int(self.term))
+        power = 1
+        for i in range(1, int(self.term) + 1):
+            power = power * (1 + float(self.rate))
+
+        total = int(self.deposit) * power
         _interest = total - self.deposit
         return _interest
 
